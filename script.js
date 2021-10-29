@@ -29,7 +29,7 @@ function generatePassword(){
   if(confirmSpecialChars){
       selectedCritirea += specialChar;
   }
-//make sure that at least one charcter type is selected
+//at least one charcter type is selected
   if(selectedCritirea.length>0){
       console.log(selectedCritirea);
 //generate a random password
