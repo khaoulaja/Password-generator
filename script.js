@@ -1,4 +1,4 @@
-// Assignment Code
+//variables
 var generateBtn = document.querySelector("#generate");
 var upperCase="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowerCase="abcdefghijklmnopqrstuvwxyz"
@@ -10,8 +10,8 @@ var length;
 
 
 function generatePassword(){
-  //confirn user critirea
-  
+
+  //confirm user critirea
   var confirmUpperCase =confirm("Do you want to include UpperCase letters? ");
   var confirmLowerCase =confirm("Do you want to include LowerCase letters? ");
   var confirmNumbers =confirm("Do you want to include numbers? ");
@@ -29,20 +29,18 @@ function generatePassword(){
   if(confirmSpecialChars){
       selectedCritirea += specialChar;
   }
-
+//make sure that at least one charcter type is selected
   if(selectedCritirea.length>0){
       console.log(selectedCritirea);
-
+//generate a random password
       for(i=0; i<length; i++){
           pwd +=selectedCritirea.charAt(Math.random()*selectedCritirea.length);
 
       }
-      // window.alert(pwd);
-
   }
   else{
   window.alert("At least one charater type should be selected");
-  // generatePassword();
+   generatePassword();
   }
  return pwd;
 
@@ -50,16 +48,19 @@ function generatePassword(){
 
 // Write password to the #password input
 function writePassword() {
+    //empty the variables 
+    pwd ="";
+    selectedCritirea="";
   length = window.prompt("Enter the number of characters desired in your password:");
-  if(length>7 && length<129){
-
-    generatePassword();
-    } 
-    else if(length<8 || length>128 || Number.isInteger(parseInt(length)) === false){
+    //make sure the length is a number and is between 8 and 128
+    if(length<8 || length>128 || Number.isInteger(parseInt(length)) === false){
         while(length<8 || length>128 || Number.isInteger(parseInt(length)) === false){
         length = window.prompt("Enter a valid number! The number should be at least 8 and no more than 128.");
             
         }
+        generatePassword();
+    }
+    else{
         generatePassword();
     }
     
